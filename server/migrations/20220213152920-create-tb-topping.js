@@ -19,12 +19,12 @@ module.exports = {
       },
       idUser: {
         type: Sequelize.INTEGER,
-        // references: {
-        //   model: "tb_users",
-        //   key: "id",
-        // },
-        // onUpdate: "CASCADE",
-        // onDelete: "CASCADE",
+        references: {
+          model: "tb_users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,

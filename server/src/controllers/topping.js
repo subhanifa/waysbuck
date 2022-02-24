@@ -1,4 +1,4 @@
-const { tb_topping } = require('../../models')
+const { tb_topping, tb_user } = require('../../models')
 
 exports.addTopping = async (req, res) => {
     try {
@@ -55,18 +55,27 @@ exports.addTopping = async (req, res) => {
 exports.getToppings = async (req, res) => {
     try {
         let data = await tb_topping.findAll({
+            include: [
+                {
+                    model: tb_user,
+                    as: "user",
+                    attributes: {
+                    exclude: ["createdAt", "updatedAt", "password"],
+                    },
+                },
+                ],
             attributes: {
             exclude: ["createdAt", "updatedAt", "idUser"],
             },
         });
     
-        // data = JSON.parse(JSON.stringify(data))    
-        // data = data.map((item) => {
-        //     return {
-        //     ...item,
-        //     image: process.env.FILE_PATH + item.image
-        //     }
-        // })
+        data = JSON.parse(JSON.stringify(data))    
+        data = data.map((item) => {
+            return {
+            ...item,
+            image: process.env.FILE_PATH + item.image
+            }
+        })
     
         res.send({
             status: "Success on Getting Toppings",

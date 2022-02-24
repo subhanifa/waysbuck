@@ -11,13 +11,34 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      tb_order.belongsTo(models.tb_user, {
+        as: "user",
+        foreignKey: {
+          name: "idUser",
+        },
+      });
+      
+      tb_order.belongsTo(models.tb_product, {
+        as: "product",
+        foreignKey: {
+          name: "idProduct",
+        },
+      });
+
+      tb_order.belongsTo(models.tb_topping, {
+        as: "topping",
+        foreignKey: {
+          name: "idTopping",
+        },
+      });
     }
   }
   tb_order.init({
     idUser: DataTypes.INTEGER,
     idProduct: DataTypes.INTEGER,
+    idTopping: DataTypes.INTEGER,
     qty: DataTypes.INTEGER,
-    toppings: DataTypes.STRING
+    price: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'tb_order',

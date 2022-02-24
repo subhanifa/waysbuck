@@ -14,7 +14,7 @@ export default function Menu() {
       const response = await API.get("/products");
       // Store product data to useState variabel
       setProducts(response.data.data.products);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.log(error);
     }

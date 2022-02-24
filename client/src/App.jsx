@@ -28,7 +28,7 @@ export default function App() {
   const [admin, setAdmin] = useContext(AdminContext);
   const [login, setLogin] = useContext(LoginContext);
   // console.clear();
-  console.log(state);
+  // console.log(state);
   useEffect(() => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
@@ -63,7 +63,7 @@ export default function App() {
 
       // Get user data
       let payload = response.data.data.user;
-      console.log(payload);
+      // console.log(payload);
       // Get token from local storage
       payload.token = localStorage.token;
 
@@ -85,7 +85,6 @@ export default function App() {
     return (
       <>
         
-          
             <ModalProvider>
               <RegisterProvider>
                 <Nav/>
@@ -99,7 +98,7 @@ export default function App() {
                       <Route exact path="/product/:id" element={ <ProductDetail/> } />
 
                       <Route exact path="/" element={ <CustomerRoute />}>
-                        <Route exact path="/profile" element={ <ProfilePage/> } />
+                        <Route exact path="/profile/:fullname" element={ <ProfilePage/> } />
                         <Route exact path="/cart" 
                                 element=
                                 {<CartModalProvider>
@@ -119,15 +118,9 @@ export default function App() {
                                 </TransactionModalProvider>
                                 } />
                       </Route>
-
-
-
-
-
                       
                     </Route>
                   </Routes>
-          
         
       </>
     )

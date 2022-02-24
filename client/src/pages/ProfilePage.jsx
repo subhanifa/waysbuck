@@ -1,19 +1,9 @@
-  import React, { useContext, useState } from 'react'
+import React from 'react'
 import ProfileCard from '../components/ProfileCard'
 import TransactionCard from '../components/TransactionCard'
-import { UserContext } from '../contexts/UserContext'
+
   
   export default function ProfilePage() {
-
-    // const [ user, setUser ] = useState({})
-    // const getUser = async (id) => {
-    //   try {
-    //     const response = await API.get('/user');
-    //     setUser(response.data.data.user)
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
 
     return (
       <div className="lg:flex justify-between mx-4 my-6 md:mx-20 md:my-16 lg:mx-40 xl:mx-32">

@@ -11,12 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      // tb_topping.belongsTo(models.tb_user, {
-      //   as: "user",
-      //   foreignKey: {
-      //     name: "idUser",
-      //   },
-      // });
+      tb_topping.belongsTo(models.tb_user, {
+        as: "user",
+        foreignKey: {
+          name: "idUser",
+        },
+      });
+
+      tb_topping.hasMany(models.tb_order, {
+        as: "order",
+        foreignKey: {
+          name: "idTopping",
+        },
+      });
     }
   }
   tb_topping.init({

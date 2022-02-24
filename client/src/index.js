@@ -7,6 +7,7 @@ import { AdminProvider, LoginProvider } from "./contexts/AuthContext";
 import { UserProvider } from './contexts/UserContext';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom"
+import { OrderProvider } from './contexts/OrderContext';
 
 
 ReactDOM.render(
@@ -14,9 +15,11 @@ ReactDOM.render(
     <UserProvider>
       <AdminProvider>
         <LoginProvider>
-          <Router>
-            <App />
-          </Router>
+          <OrderProvider>
+            <Router>
+              <App />
+            </Router>
+          </OrderProvider>
         </LoginProvider>
       </AdminProvider>
     </UserProvider>

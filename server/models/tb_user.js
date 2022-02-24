@@ -17,13 +17,13 @@ module.exports = (sequelize, DataTypes) => {
           name: "idUser",
         },
       });
-
-      // tb_user.hasMany(models.tb_order, {
-      //   as: "order",
-      //   foreignKey: {
-      //     name: "idUser",
-      //   },
-      // });
+      
+      tb_user.hasMany(models.tb_order, {
+        as: "order",
+        foreignKey: {
+          name: "idUser",
+        },
+      });
     }
   }
   tb_user.init({

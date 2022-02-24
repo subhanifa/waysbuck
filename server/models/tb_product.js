@@ -17,6 +17,13 @@ module.exports = (sequelize, DataTypes) => {
           name: "idUser",
         },
       });
+
+      tb_product.hasMany(models.tb_order, {
+        as: "order",
+        foreignKey: {
+          name: "idProduct",
+        },
+      });
     }
   }
   tb_product.init({

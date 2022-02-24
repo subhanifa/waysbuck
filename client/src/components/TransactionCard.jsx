@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { logo, QrCode } from '../exports/exportImage'
-import Transactions from '../tempData/Transactions'
 import thousandSeparator from '../utilities/thousandSeparator'
+import { dateformat } from 'dateformat'
+import { OrderContext } from '../contexts/OrderContext'
+
 
 export default function TransactionCard() {
+
+    const path = "http://localhost:5000/uploads/"
+    const [ order, setOrder ] = useContext(OrderContext)
+
   return (
     <>
 
       <div className="w-full lg:w-8/12 space-y-4 mb-4 lg:mb-0">
-        {Transactions.map((item, index) => (
+        {order.map((item, index) => (
           <div key={index} className="flex">
-            <img src={item.image} alt="product" className="w-1/3 object-contain lg:w-3/12" />
+            <img src={ path + item.product.image} alt="product" className="w-1/3 object-contain lg:w-3/12" />
             <div className="text-red-600 font-['Avenir-Book'] space-y-2 ml-2 lg:ml-4 lg:space-y-5 lg:w-full ">
                 <h4 className="text-md font-['Avenir-Black'] font-bold">
-                    {item.productName}
+                    {item.product.title}
                 </h4>
                 <p className="text-xs">{item.orderDate}</p>
-                <p className="text-xs">Topping : {item.topping}</p>
+                <p className="text-xs">Topping : {item.topping.title}</p>
                 <p className="text-sm">
                     Price : Rp {thousandSeparator(item.price)}
               </p>
@@ -35,7 +41,7 @@ export default function TransactionCard() {
           <p className="text-xs text-yellow-700 font-bold">
             Sub Total : Rp{" "}
             {thousandSeparator(
-              Transactions.map((item) => item.price).reduce(
+              order.map((item) => item.price).reduce(
                 (prev, next) => prev + next
               )
             )}

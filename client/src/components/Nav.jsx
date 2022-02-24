@@ -6,6 +6,8 @@ import { ModalContext } from '../contexts/ModalContext';
 import { UserContext } from "../contexts/UserContext";
 import { AddProd, AddTopp, Cart, logo, Logout, UserIcon, UserLogo } from '../exports/exportImage'
 import Transactions from '../tempData/Transactions';
+import { OrderContext } from '../contexts/OrderContext';
+import urlSlug from 'url-slug'
 
 export default function Nav() {
 
@@ -14,6 +16,8 @@ export default function Nav() {
     const [ open, setOpen ] = useContext(ModalContext)
     const [ state, dispatch ] = useContext(UserContext);
     const [ register, setRegister ] = useContext(RegisterContext)
+    const [ order, setOrder ] = useContext(OrderContext)
+
 
     let navigate = useNavigate();
 
@@ -43,9 +47,9 @@ export default function Nav() {
                         >
                             <img src={Cart} alt="shopping-basket" />
 
-                            {admin ? null : Transactions.length > 0 ? (
+                            {admin ? null : order.length > 0 ? (
                             <div className="w-5 h-5 text-xs text-white font-bold bg-red-600 rounded-full absolute -right-2 -top-1 flex justify-center items-center">
-                            {Transactions.length}
+                            {order.length}
                             </div>
                         ) : null}
                         </Link>
@@ -104,7 +108,7 @@ export default function Nav() {
                                 <>
                                 <Menu.Item>
                                     <Link
-                                    to="/profile"
+                                    to={"/profile/" + urlSlug(state.user.fullname)}
                                     className="p-4 flex items-center hover:bg-gray-100"
                                     >
                                     <img
