@@ -5,7 +5,6 @@ import { AdminContext, LoginContext, RegisterContext} from '../contexts/AuthCont
 import { ModalContext } from '../contexts/ModalContext';
 import { UserContext } from "../contexts/UserContext";
 import { AddProd, AddTopp, Cart, logo, Logout, UserIcon, UserLogo } from '../exports/exportImage'
-import Transactions from '../tempData/Transactions';
 import { OrderContext } from '../contexts/OrderContext';
 import urlSlug from 'url-slug'
 

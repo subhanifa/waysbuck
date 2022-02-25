@@ -1,7 +1,7 @@
 import './assets/styles/App.css';
 import React, { useContext, useEffect } from 'react'
 import Nav from './components/Nav';
-import {BrowserRouter as Router, Routes, Route, useNavigate} from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { AdminContext, LoginContext, RegisterProvider } from "./contexts/AuthContext";
 import { CartModalProvider, ModalProvider, TransactionModalProvider } from "./contexts/ModalContext";
 import { UserContext } from './contexts/UserContext';

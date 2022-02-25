@@ -32,9 +32,9 @@ export default function ProductDetail() {
         }
     };
 
-    const handleClick = () => {
+    const handleClick = (id) => {
       const checkedTopping = toppings.filter(
-        (topping) => topping.checked == true
+        (topping) => topping.id.checked === true
       );
   
       console.log(checkedTopping);

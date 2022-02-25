@@ -27,8 +27,6 @@ import Logout from "../assets/images/profile/logout.png"
 import UserLogo from "../assets/images/profile/userlogo.png"
 
 
-
-
 export {
     logo,
     IceCoffeePS,
